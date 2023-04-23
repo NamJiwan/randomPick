@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>20230418duty</title>
+    <style>
+      div {
+        border: 1px solid black;
+        width: 300px;
+        height: 200px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2>오늘의 당번은</h2>
+      <p id="text"></p>
+      <p id="duty"></p>
+    </div>
+    <button onclick="Duty()">참여하기</button>
+    <button onclick="duty_call1()">당번추첨</button>
+    <button onclick="retry()">새로고침</button>
+
+    <script>
+      function Duty(num, name) {
+        this.num = parseInt(prompt('참여인원'));
+        this.name = ['ska', 'wl'];
+        console.log(this.name);
+      }
+    </script>
+
+    <script>
+      let jo = new Object();
+      jo.num = 0;
+      jo.name = [];
+      jo.rand = 0;
+
+      jo.che = function () {
+        this.num = parseInt(prompt('몇명참여'));
+        // console.log(jo.num);
+        let na = function (name2) {
+          for (let index = 0; index < jo.num; index++) {
+            name2 = prompt('이름입력');
+            // this.name.push(na());
+            jo.name.push(name2);
+            // console.log(name2);
+          }
+          // console.log(jo.name);
+        };
+        na();
+        document.getElementById('text').innerHTML = jo.name;
+      };
+      function duty_call1() {
+        jo.rand = Math.floor(Math.random() * jo.num + 1);
+        console.log(jo.name[jo.rand]);
+        document.getElementById('duty').innerHTML = '참여인원은' + jo.num + '명 입니다.';
+        document.getElementById('duty').innerHTML = '청소인 사람은 : ' + jo.name[jo.rand] + ' 입니다.';
+      }
+
+      function retry() {
+        location.reload();
+      }
+    </script>
+
+    <!-- 
+    <script>
+        let join_duty_name = [];
+        let num = function{ parseInt(prompt('몇명참여하나요?'));
+        for (let i = 0; i < num; i++) {
+          join_duty_name.push(prompt('이름을 입력하세요'));
+        }}
+        function check1(){ 
+        document.write(join_duty_name);}
+      //   let join_duty = {};
+      //   join_duty.ch = function () {
+      //     return Math.floor(Math.random() * (join_duty_name.lenght + 1));
+      //     console.log(retrun);
+      function duty_call1() {
+        let ran_duty;
+        document.getElementById('duty').innerHTML = ran_duty + '명 입니다.';
+      }
+    </script> -->
+  </body>
+</html>
